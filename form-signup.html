@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Form Example</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="mb-4 text-center">Contact Form</h2>
+        <form id="submit-form" class="submit-form">
+
+          <input type="hidden">
+          <!-- Name -->
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input name="FullName" type="text" class="form-control" id="name" placeholder="Enter your full name"
+              required>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input name="Email" type="email" class="form-control" id="email" placeholder="name@example.com" required>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="Password" class="form-control" id="password" placeholder="Enter password"
+              required>
+          </div>
+
+
+
+          <!-- Dropdown -->
+          <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <select name="subject" class="form-select" id="subject">
+              <option selected disabled>Choose a subject</option>
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Support">Support</option>
+              <option value="Feedback">Feedback</option>
+            </select>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <div class="container  mt-5">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email address</th>
+                <th scope="col">Password</th>
+                <th scope="col">Subject</th>
+                <th>Delete Record</th>
+                <th>Update Record</th>
+              </tr>
+            </thead>
+            <tbody class="tabeldata">
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS (optional for interactivity) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      var formelem = document.querySelector('.submit-form');
+      var tableBody = document.querySelector('.tabeldata');
+
+
+      formelem.addEventListener("submit", function () {
+        event.preventDefault();
+        var formdata = new FormData(formelem);
+
+        // This is to get single form vlaue
+        // var fname = formdata.get("FullName")
+        // console.log(fname)
+        // This is to get a form value as a obj expect taking each value by name
+        // var dataObj = Object.fromEntries(formdata.entries());
+        var tablerow = document.createElement('tr')
+        formdata.forEach((value, key) => {
+          var td = document.createElement("td");
+          td.textContent = value;
+          tablerow.appendChild(td);
+        });
+
+        // Delete Btn in TD
+        var deletetd = document.createElement('td')
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "Delete";
+        delBtn.className = "btn btn-danger btn-sm";
+        deletetd.appendChild(delBtn);
+        tablerow.appendChild(deletetd);
+        delBtn.addEventListener("click", () => tablerow.remove());
+        tableBody.appendChild(tablerow);
+        // Update Btn in TD
+        var updatetd = document.createElement('td')
+        const updatebtn = document.createElement("button");
+        updatebtn.textContent = "Update Record";
+        updatebtn.className = "btn btn-danger updatebtn btn-sm";
+        updatetd.appendChild(updatebtn);
+        tablerow.appendChild(updatetd);
+      })
+    </script>
+</body>
+</html>

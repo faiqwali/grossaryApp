@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class07</title>
+</head>
+
+<body>
+</body>
+<script>
+    var students = [{
+        name: 'Faiq',
+        age: 27,
+        markes: 10
+    },
+    {
+        name: 'Danish',
+        age: 28,
+        markes: 20
+    },
+    {
+        name: 'Arman',
+        age: 25,
+        markes: 90
+    },
+    {
+        name: 'Helen',
+        age: 22,
+        markes: 70
+    },
+    {
+        name: 'David',
+        age: 30,
+        markes: 60
+    },
+    {
+        name: 'Faiq',
+        age: 27,
+        markes: 55
+    }]
+    var passingmarks = 60;
+
+    var updaterecords = students.map((student) => {
+          //     student.markes = student.markes + 10;
+        //     student.passed = true;
+
+        // //     if (student.markes >= passingmarks)
+        // // {
+
+        // // }
+
+            return student;
+    });
+    const totalMarks = students.reduce((total, student) => {
+        return total + student.markes;
+    }, 0);
+    console.log(totalMarks);
+
+
+    console.log(updaterecords);
+
+</script>
+
+</html>

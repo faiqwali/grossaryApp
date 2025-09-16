@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Table</title>
+</head>
+<body>
+
+    <table border="2">
+        <tr>
+            <td><button id="btn-0" value="0" onclick="onturn(0)">0</button></td>
+            <td><button id="btn-1" value="1" onclick="onturn(1)">0</button></td>
+            <td><button id="btn-2" value="2" onclick="onturn(2)">0</button></td>
+        </tr>
+        <tr>
+            <td><button id="btn-3" value="3" onclick="onturn(3)">0</button></td>
+            <td><button id="btn-4" value="4" onclick="onturn(4)">0</button></td>
+            <td><button id="btn-5" value="5" onclick="onturn(5)">0</button></td>
+        </tr>
+        <tr>
+            <td><button id="btn-6" value="6" onclick="onturn(6)">0</button></td>
+            <td><button id="btn-7" value="7" onclick="onturn(7)">0</button></td>
+            <td><button id="btn-8" value="8" onclick="onturn(8)">0</button></td>
+        </tr>
+    </table>
+
+</body>
+<script>
+    var playerTurn = 1;
+    function onturn(element)
+    {
+        var playerMark;
+
+        if(playerTurn === 1){
+            playerMark = 'O';
+            playerTurn = 2;
+            
+        }else{
+            playerMark = 'X';
+            playerTurn = 1;
+        }
+
+        var btn = getBtn('btn-'+element)
+        btn.disabled = true;
+        btn.innerText = playerMark;
+    }
+
+    function getBtn(btnRef){
+        return document.getElementById(btnRef);
+    }
+</script>
+</html>
